@@ -6,8 +6,7 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder'
 
 export default class extends Controller {
   connect() {
-    console.log('Hello, from MapController', this.markers)
-    console.log(process.env.MAPBOX_API_KEY)
+    // console.log('Hello, from MapController', this.markers)
     this._initMap()
     this._addMarkers()
     this._initSearch()
