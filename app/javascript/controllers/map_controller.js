@@ -7,19 +7,22 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder'
 export default class extends Controller {
   connect() {
     console.log('Hello, from MapController', this.markers)
+    console.log(process.env.MAPBOX_API_KEY)
     this._initMap()
     this._addMarkers()
-    this._fitMapToMarkers()
     this._initSearch()
   }
 
   _initMap() {
-    mapboxgl.accessToken = process.env.MAPBOX_API_KEY
+    mapboxgl.accessToken = this.data.get('mapboxApiKey')
     this.map = new mapboxgl.Map({
       container: this.element,
       style: 'mapbox://styles/pdunleav/cjofefl7u3j3e2sp0ylex3cyb'
     });
-    this.map.on('load', () => this.map.resize())
+    this.map.on('load', () => {
+      this.map.resize()
+      this._fitMapToMarkers()
+    })
   }
 
   _addMarkers() {
