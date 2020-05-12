@@ -5,8 +5,6 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder'
 
 export default class extends Controller {
-  static targets = [ 'output' ]
-
   connect() {
     console.log('Hello, from MapController', this.markers)
     this._initMap()
@@ -19,7 +17,7 @@ export default class extends Controller {
     mapboxgl.accessToken = process.env.MAPBOX_API_KEY
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/pdunleav/cjofefl7u3j3e2sp0ylex3cyb'
     });
     this.map.on('load', () => this.map.resize())
   }
